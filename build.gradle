@@ -1,0 +1,43 @@
+/* Brennan Jackson - project build file using gradle */
+
+//Add plugins for java and application
+apply plugin: 'java'
+apply plugin: 'application'
+
+//set main class for application plugin
+mainClassName = 'RunEdgeConvert'
+
+//use maven central for junit and hamcrest plugins
+repositories {
+	mavenCentral()
+}
+
+//set testing dependencies
+dependencies {
+	testCompile "junit:junit:4.12"
+}
+
+// we are using a different project structure so we need to describe what we are using
+sourceSets {
+	main {
+		java {
+			srcDir 'src'
+		}
+	}
+
+	test {
+		java {
+			srcDir 'test'
+		}
+	}
+
+}
+
+// setup manifest for jar file
+jar {
+	manifest {
+		attributes(
+			'Main-Class': 'RunEdgeConvert'
+		)
+	}
+}
